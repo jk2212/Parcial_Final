@@ -1,0 +1,47 @@
+-- punto 1
+CREATE OR REPLACE function  CALCULAR_CAJAS_NECESARIAS (items number,cajas_grandes_entrantes number,cajas_pequeñas_entrantes number)
+RETURN number
+as
+item number :=items;
+cajas_grandes number;
+cajas_pequeñas number;
+numero_cajas number;
+
+begin
+
+  cajas_grandes := round(item/5);
+  cajas_pequeñas := item - cajas_grandes*5;
+  numero_cajas :=cajas_grandes +cajas_pequeñas;
+
+
+RETURN numero_cajas;
+End;
+
+---punto 3
+declare
+   TYPE number_array iS VARRAY(50) OF INTEGER;
+    n number_array;
+begin
+n :=  number_array (-2, -3, 4, -1, -2, 1, 5, -3);
+end;
+
+
+CREATE OR REPLACE function LARGEST_SUM( n number, matriz number)
+return number
+as
+matriz number := matriz;
+  max_so_far number := 0;
+    max_ending_here number := 0
+ for i 0 in .. matriz loop
+   max_ending_here = max_ending_here + n[i]
+  if(max_ending_here < 0)
+            max_ending_here = 0
+   if(max_so_far < max_ending_here)
+            max_so_far = max_ending_here
+    end if;
+    end if;
+end loop;
+
+return max_so_far
+end;
+
